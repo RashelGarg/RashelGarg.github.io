@@ -711,9 +711,10 @@
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); display: flex; flex-direction: column;
       box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
       transform-origin: bottom right;
     }
+    #ai-chat-window.expanded { width: 520px; height: 680px; }
     #ai-chat-window.hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
     
     .chat-header {
@@ -722,11 +723,13 @@
       color: var(--text); border-bottom: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
     }
-    #close-chat {
+    .chat-header-actions { display: flex; align-items: center; gap: 6px; }
+    #resize-chat, #close-chat {
       background: none; border: none; color: var(--muted); cursor: pointer;
-      font-size: 1.4rem; line-height: 1; transition: var(--transition);
+      font-size: 1.1rem; line-height: 1; transition: var(--transition); padding: 2px 4px;
     }
-    #close-chat:hover { color: var(--text); }
+    #close-chat { font-size: 1.4rem; }
+    #resize-chat:hover, #close-chat:hover { color: var(--text); }
 
     #chat-messages {
       flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;
@@ -1202,7 +1205,10 @@
     <div id="ai-chat-window" class="hidden">
       <div class="chat-header">
         <span>Rashel's AI Assistant</span>
-        <button id="close-chat">×</button>
+        <div class="chat-header-actions">
+          <button id="resize-chat" aria-label="Resize chat" title="Expand / Collapse">⤢</button>
+          <button id="close-chat" aria-label="Close chat">×</button>
+        </div>
       </div>
       <div id="chat-messages">
         <div class="message assistant">👋 Hi! I'm Rashel's interview assistant. Ask me anything about her education, skills, projects, experience, or career goals — and I'll always suggest follow-up questions to keep the conversation going!</div>
@@ -1279,6 +1285,8 @@
     // System prompt primed as user→model exchange so Gemini respects it as permanent context
     const RASHEL_SYSTEM_PROMPT = `You are an interview-style AI assistant exclusively representing Rashel Garg. Your ONLY purpose is to talk about Rashel. Follow these strict rules:
 
+0. CONCISENESS: Keep every answer SHORT, PRECISE, and PUNCHY — 3 to 5 sentences maximum per answer. Do not over-explain. Quality over quantity.
+
 BEHAVIOR RULES:
 1. ONLY talk about Rashel Garg. If asked anything unrelated, gently redirect back to her background, strengths, or experience.
 2. ALWAYS stay positive. If asked negative questions (e.g. "Why should I not hire you?"), reframe into a growth-focused, strengths-based response.
@@ -1341,6 +1349,13 @@ Always format follow-up questions as:
 
     chatClose.addEventListener('click', () => {
       chatWindow.classList.add('hidden');
+    });
+
+    const resizeBtn = document.getElementById('resize-chat');
+    resizeBtn.addEventListener('click', () => {
+      const expanded = chatWindow.classList.toggle('expanded');
+      resizeBtn.textContent = expanded ? '⤡' : '⤢';
+      resizeBtn.title = expanded ? 'Collapse' : 'Expand';
     });
 
     chatInput.addEventListener('keypress', (e) => {
