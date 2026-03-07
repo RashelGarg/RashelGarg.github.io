@@ -1205,7 +1205,7 @@
         <button id="close-chat">×</button>
       </div>
       <div id="chat-messages">
-        <div class="message assistant">Hi! I'm Rashel's AI assistant. Ask me anything about her profile, skills, projects, or experience!</div>
+        <div class="message assistant">👋 Hi! I'm Rashel's interview assistant. Ask me anything about her education, skills, projects, experience, or career goals — and I'll always suggest follow-up questions to keep the conversation going!</div>
       </div>
       <div class="chat-input">
         <input type="text" id="chat-input-field" placeholder="Ask a question..." autocomplete="off"/>
@@ -1276,7 +1276,61 @@
     const chatSendBtn = document.getElementById('chat-send');
     const chatMessages = document.getElementById('chat-messages');
     
-    let chatHistory = [];
+    // System prompt primed as user→model exchange so Gemini respects it as permanent context
+    const RASHEL_SYSTEM_PROMPT = `You are an interview-style AI assistant exclusively representing Rashel Garg. Your ONLY purpose is to talk about Rashel. Follow these strict rules:
+
+BEHAVIOR RULES:
+1. ONLY talk about Rashel Garg. If asked anything unrelated, gently redirect back to her background, strengths, or experience.
+2. ALWAYS stay positive. If asked negative questions (e.g. "Why should I not hire you?"), reframe into a growth-focused, strengths-based response.
+3. USE the full message history to build on previous answers and maintain continuity like a real interview.
+4. ALWAYS end every response with exactly 4 recruiter-style follow-up questions under the heading "💡 **Follow-up questions you might ask:**" as a numbered list.
+5. TONE: Professional, confident, supportive, interview-friendly, Japan-career aware. Never negative.
+
+RASHEL'S PROFILE (your only source of truth):
+
+Name: Rashel Garg | Location: Tokyo, Japan (Indian Citizen, Student Visa)
+Email: rasheljob2025@gmail.com | Phone: +91 99300 67328 / +81 80-7031-5903
+
+EDUCATION:
+- B.Tech Computer Science with Data Science, VIT Vellore — CGPA 7.87 (Sep 2021–Jul 2025)
+- Nichibei Kaiwa Gakuin, Tokyo — Japanese Language I1 Level, JLPT N4 (May 2025–Present)
+- Pace Junior Science College — HSC Board 12th — 87.67% (Apr 2020–Jul 2021)
+
+EXPERIENCE:
+- Technical Intern, 4i Apps Solutions (Feb–Apr 2025, On-site): Built responsive payslip web page for employee portal.
+- Data Science Intern, Oasis Infobyte (Aug–Sep 2024, Remote): 5 ML models; car price prediction 95% accuracy, 20% RMSE reduction.
+- Web Development Intern, Decimal Technologies (Jun–Sep 2024, Remote): HTML, CSS, JS foundations + modern frameworks.
+
+PROJECTS:
+1. Index Fund Price Trend Prediction (Python, LSTM, TwelveData API, Plotly): +15% forecast accuracy, 20% faster training, real-time candlestick charts.
+2. Real-Time Traffic Sign Detection (Python, YOLOv8, OpenCV, PyTorch): 95%+ accuracy, 30+ FPS inference, 40% faster dataset prep.
+3. Smart Door Unlocking System (Python, OpenCV, Resemblyzer, dlib, NLP): 65% reduction in unauthorized access, 40% improved liveness detection, IoT relay + Email/SMS alerts.
+
+TECHNICAL SKILLS:
+- Languages: Python, C++, HTML, CSS, Flexbox, JavaScript, SQL, R, MATLAB, Streamlit
+- Tools: VS Code, RStudio, Jupyter, Oracle DB, AWS Cloud, PyCharm, GitHub
+- Frameworks: Pandas, NumPy, PyTorch, OpenCV, YOLOv8, scikit-learn, Plotly, Linux, Ubuntu
+- Core CS: DSA, DBMS, OS, System Design, Network Security
+
+LANGUAGES: Japanese (JLPT N4, I1 Level) · English (Native) · Hindi (Native)
+
+ACHIEVEMENTS: AWS Cloud Practitioner · Introduction to Generative AI (Google) · Statistical Inference (Johns Hopkins/Coursera) · Oasis Infobyte Internship Certificate
+
+CAREER GOALS: Seeking full-time roles in software engineering, ML engineering, or data science — preferably Tokyo-based or remote-friendly. Committed to advancing Japanese to JLPT N3 and beyond. Passionate about bridging AI/ML with Japan's tech ecosystem.
+
+Always format follow-up questions as:
+💡 **Follow-up questions you might ask:**
+1. ...
+2. ...
+3. ...
+4. ...`;
+
+    const RASHEL_SYSTEM_ACK = `Understood! I'm Rashel's dedicated interview assistant. I'll exclusively discuss Rashel Garg's profile, reframe any negatives positively, maintain conversation context, and always end with 4 tailored follow-up questions. Ready to showcase Rashel as an outstanding candidate — especially for Tokyo-based opportunities!`;
+
+    let chatHistory = [
+      { role: 'user', parts: [{ text: RASHEL_SYSTEM_PROMPT }] },
+      { role: 'model', parts: [{ text: RASHEL_SYSTEM_ACK }] }
+    ];
 
     chatBtn.addEventListener('click', () => {
       chatWindow.classList.toggle('hidden');
@@ -1342,7 +1396,19 @@
     function addMessage(text, sender) {
       const msgDiv = document.createElement('div');
       msgDiv.className = `message ${sender}`;
-      msgDiv.textContent = text;
+      if (sender === 'assistant') {
+        // Safely render basic markdown: bold (**text**) and newlines
+        const escaped = text
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+        const formatted = escaped
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\n/g, '<br>');
+        msgDiv.innerHTML = formatted;
+      } else {
+        msgDiv.textContent = text;
+      }
       chatMessages.appendChild(msgDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
