@@ -57,16 +57,18 @@
     :root[data-theme="light"] .chat-header { background: #fdfdfd; }
 
     /* ── Light-theme hero fixes ── */
-    :root[data-theme="light"] .hero-name .line1 { color: #0f172a; }
-    :root[data-theme="light"] .hero-tagline { color: #334155; }
+    :root[data-theme="light"] .hero-name .line1 { color: #0f172a !important; }
+    :root[data-theme="light"] .hero-tagline { color: #1e293b !important; }
+    :root[data-theme="light"] .hero-tagline strong { color: #000000 !important; font-weight: 700 !important; }
     :root[data-theme="light"] .pill {
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(0,0,0,0.12);
-      color: #475569;
+      background: rgba(0,0,0,0.06) !important;
+      border-color: rgba(0,0,0,0.15) !important;
+      color: #0f172a !important;
+      font-weight: 600 !important;
     }
-    :root[data-theme="light"] .pill:hover { border-color: var(--blue); color: var(--blue); }
-    :root[data-theme="light"] .scroll-hint { color: #64748b; }
-    :root[data-theme="light"] .scroll-hint .arrow { border-color: #64748b; }
+    :root[data-theme="light"] .pill:hover { border-color: var(--blue) !important; color: var(--blue) !important; }
+    :root[data-theme="light"] .scroll-hint { color: #334155 !important; }
+    :root[data-theme="light"] .scroll-hint .arrow { border-color: #334155 !important; }
 
     img.emoji {
       height: 1.25em;
