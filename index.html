@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -681,13 +681,29 @@
 
     .theme-toggle {
       background: none; border: none; color: var(--text); cursor: pointer; padding: 6px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition);
-      margin-right: 12px;
+      margin-right: 4px;
     }
     .theme-toggle:hover { background: rgba(128,128,128,0.1); }
     .theme-toggle svg { width: 20px; height: 20px; }
     :root[data-theme="light"] .moon-icon { display: none; }
     :root[data-theme="dark"] .sun-icon { display: none; }
     :root:not([data-theme="light"]) .sun-icon { display: none; }
+
+    .lang-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: var(--transition);
+      margin-right: 4px;
+    }
+    .lang-toggle:hover { border-color: var(--blue); color: var(--blue); }
     
     .nav-actions { display: flex; align-items: center; gap: 8px; }
     
@@ -779,20 +795,21 @@
   <nav>
     <div class="nav-logo">RG</div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#achievements">Certs</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#about" data-i18n="nav-about">自己紹介</a></li>
+      <li><a href="#experience" data-i18n="nav-exp">経歴</a></li>
+      <li><a href="#projects" data-i18n="nav-proj">プロジェクト</a></li>
+      <li><a href="#skills" data-i18n="nav-skills">スキル</a></li>
+      <li><a href="#education" data-i18n="nav-edu">学歴</a></li>
+      <li><a href="#achievements" data-i18n="nav-certs">資格</a></li>
+      <li><a href="#contact" data-i18n="nav-contact">お問い合わせ</a></li>
     </ul>
     <div class="nav-actions">
+      <button id="langToggle" class="lang-toggle" aria-label="Switch Language">EN</button>
       <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
         <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-      <a href="#contact" class="nav-cta">Let's Talk</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav-cta">お問い合わせ</a>
       <div class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </div>
@@ -800,13 +817,13 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" onclick="closeMobile()">About</a>
-    <a href="#experience" onclick="closeMobile()">Experience</a>
-    <a href="#projects" onclick="closeMobile()">Projects</a>
-    <a href="#skills" onclick="closeMobile()">Skills</a>
-    <a href="#education" onclick="closeMobile()">Education</a>
-    <a href="#achievements" onclick="closeMobile()">Achievements</a>
-    <a href="#contact" onclick="closeMobile()">Contact</a>
+    <a href="#about" onclick="closeMobile()" data-i18n="nav-about">自己紹介</a>
+    <a href="#experience" onclick="closeMobile()" data-i18n="nav-exp">経歴</a>
+    <a href="#projects" onclick="closeMobile()" data-i18n="nav-proj">プロジェクト</a>
+    <a href="#skills" onclick="closeMobile()" data-i18n="nav-skills">スキル</a>
+    <a href="#education" onclick="closeMobile()" data-i18n="nav-edu">学歴</a>
+    <a href="#achievements" onclick="closeMobile()" data-i18n="nav-certs">資格</a>
+    <a href="#contact" onclick="closeMobile()" data-i18n="nav-contact">お問い合わせ</a>
   </div>
 
   <!-- ── HERO ──────────────────────────────── -->
@@ -815,16 +832,15 @@
     <div class="hero-orb orb2"></div>
     <div class="hero-orb orb3"></div>
 
-    <div class="hero-badge">Available for opportunities · Tokyo, Japan 🇯🇵</div>
+    <div class="hero-badge" data-i18n="hero-badge">求職中 · 東京、日本 🇯🇵</div>
 
     <h1 class="hero-name">
       <span class="line1">Rashel</span>
       <span class="line2">Garg</span>
     </h1>
 
-    <p class="hero-tagline">
-      <strong>CS + Data Science Engineer</strong> building intelligent systems &amp; scalable web solutions.
-      From ML models to real-time computer vision.
+    <p class="hero-tagline" data-i18n-html="hero-tagline">
+      <strong>CS・データサイエンスエンジニア</strong>。MLモデルからリアルタイム戏像認識まで、革新的なシステムを構築します。
     </p>
 
     <div class="hero-pills">
@@ -838,44 +854,44 @@
     </div>
 
     <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="#contact" class="btn-outline">Contact Me</a>
+      <a href="#projects" class="btn-primary" data-i18n="hero-btn-proj">プロジェクトを見る</a>
+      <a href="#contact" class="btn-outline" data-i18n="hero-btn-contact">連絡する</a>
     </div>
 
     <div class="scroll-hint">
-      <span>scroll</span>
+      <span data-i18n="scroll-hint">スクロール</span>
       <div class="arrow"></div>
     </div>
   </section>
 
   <!-- ── ABOUT ─────────────────────────────── -->
   <section id="about">
-    <p class="section-label">// 01 — about</p>
-    <h2 class="section-title">Who I <span>Am</span></h2>
+    <p class="section-label" data-i18n="about-label">// 01 — 自己紹介</p>
+    <h2 class="section-title" data-i18n-html="about-title">私に<span>ついて</span></h2>
 
     <div class="about-grid reveal">
       <div class="about-text">
-        <p>I'm <strong>Rashel Garg</strong>, a Computer Science & Data Science graduate from VIT Vellore, currently based in <strong>Tokyo, Japan 🇯🇵</strong>. I'm passionate about building smart, data-driven applications — from predictive ML pipelines to real-time detection systems.</p>
-        <p>With hands-on internship experience across <strong>data science, web development, and enterprise software</strong>, I bridge the gap between research and production-grade systems. I'm a multilingual technologist fluent in English, Hindi, and Japanese (JLPT N4).</p>
-        <p>I'm actively seeking full-time roles in <strong>software engineering, ML engineering, or data science</strong> — with a preference for Tokyo-based or remote-friendly teams.</p>
+        <p data-i18n-html="about-p1">I'm <strong>Rashel Garg</strong>, a Computer Science & Data Science graduate from VIT Vellore, currently based in <strong>Tokyo, Japan 🇯🇵</strong>. I'm passionate about building smart, data-driven applications — from predictive ML pipelines to real-time detection systems.</p>
+        <p data-i18n-html="about-p2">With hands-on internship experience across <strong>data science, web development, and enterprise software</strong>, I bridge the gap between research and production-grade systems. I'm a multilingual technologist fluent in English, Hindi, and Japanese (JLPT N4).</p>
+        <p data-i18n-html="about-p3">I'm actively seeking full-time roles in <strong>software engineering, ML engineering, or data science</strong> — with a preference for Tokyo-based or remote-friendly teams.</p>
       </div>
 
       <div class="about-stats">
         <div class="stat-card">
           <div class="num">3+</div>
-          <div class="lbl">Internships</div>
+          <div class="lbl" data-i18n="stat-internships">インターンシップ</div>
         </div>
         <div class="stat-card">
           <div class="num">5+</div>
-          <div class="lbl">ML Models Built</div>
+          <div class="lbl" data-i18n="stat-models">MLモデル構築</div>
         </div>
         <div class="stat-card">
           <div class="num">95%</div>
-          <div class="lbl">Peak Model Accuracy</div>
+          <div class="lbl" data-i18n="stat-accuracy">最高モデル精度</div>
         </div>
         <div class="stat-card">
           <div class="num">3</div>
-          <div class="lbl">Languages Spoken</div>
+          <div class="lbl" data-i18n="stat-langs">話せる言語数</div>
         </div>
       </div>
     </div>
@@ -883,52 +899,52 @@
 
   <!-- ── EXPERIENCE ─────────────────────────── -->
   <section id="experience">
-    <p class="section-label">// 02 — experience</p>
-    <h2 class="section-title">Where I've <span>Worked</span></h2>
+    <p class="section-label" data-i18n="exp-label">// 02 — 職歴</p>
+    <h2 class="section-title" data-i18n-html="exp-title">職務<span>経歴</span></h2>
 
     <div class="timeline reveal">
 
       <div class="exp-card">
         <div class="exp-header">
           <div>
-            <div class="exp-role">Technical Intern</div>
+            <div class="exp-role" data-i18n="exp1-role">テクニカルインターン</div>
             <div class="exp-company">4i Apps Solutions</div>
           </div>
-          <span class="exp-date">Feb 2025 – Apr 2025</span>
+          <span class="exp-date" data-i18n="exp1-date">2025年2月～4月</span>
         </div>
         <ul>
-          <li>Built a fully responsive payslip web page for the internal employee portal.</li>
-          <li>Collaborated with the design team to deliver pixel-perfect UI components.</li>
+          <li data-i18n="exp1-li1">社内従業員ポータル向けに、完全レスポンシブな給与明細Webページを開発。</li>
+          <li data-i18n="exp1-li2">デザインチームと協力し、精確なUIコンポーネントを実装。</li>
         </ul>
       </div>
 
       <div class="exp-card">
         <div class="exp-header">
           <div>
-            <div class="exp-role">Data Science Intern</div>
+            <div class="exp-role" data-i18n="exp2-role">データサイエンスインターン</div>
             <div class="exp-company">Oasis Infobyte</div>
           </div>
-          <span class="exp-date">Aug 2024 – Sep 2024</span>
+          <span class="exp-date" data-i18n="exp2-date">2024年8月～9月</span>
         </div>
         <ul>
-          <li>Built 5 end-to-end machine learning models across diverse problem domains.</li>
-          <li>Developed a car price prediction model achieving <strong>95% accuracy</strong> and a <strong>20% RMSE reduction</strong>.</li>
-          <li>Conducted EDA, feature engineering, and model optimization across all pipelines.</li>
+          <li data-i18n="exp2-li1">多様な問題領域にわたる5つのMLモデルをエンドツーエンドで構築。</li>
+          <li data-i18n-html="exp2-li2">車両価格予測モデルで<strong>精度95%</strong>・RMSE<strong>20%削減</strong>を達成。</li>
+          <li data-i18n="exp2-li3">EDA・特徴量エンジニアリング・モデル最適化を実施。</li>
         </ul>
       </div>
 
       <div class="exp-card">
         <div class="exp-header">
           <div>
-            <div class="exp-role">Web Development Intern</div>
+            <div class="exp-role" data-i18n="exp3-role">Web開発インターン</div>
             <div class="exp-company">Decimal Technologies</div>
           </div>
-          <span class="exp-date">Jun 2024 – Sep 2024</span>
+          <span class="exp-date" data-i18n="exp3-date">2024年6月～9月</span>
         </div>
         <ul>
-          <li>Gained strong foundations in HTML, CSS, and JavaScript from scratch.</li>
-          <li>Explored modern frameworks and best practices in frontend engineering.</li>
-          <li>Delivered responsive UI components as part of a collaborative team project.</li>
+          <li data-i18n="exp3-li1">HTML・CSS・JavaScriptの基礎を張りから習得。</li>
+          <li data-i18n="exp3-li2">モダンWebフレームワークとフロントエンドのベストプラクティスを学習。</li>
+          <li data-i18n="exp3-li3">チームプロジェクトでレスポンシブUIコンポーネントを実装。</li>
         </ul>
       </div>
 
@@ -937,15 +953,15 @@
 
   <!-- ── PROJECTS ───────────────────────────── -->
   <section id="projects">
-    <p class="section-label">// 03 — projects</p>
-    <h2 class="section-title">What I've <span>Built</span></h2>
+    <p class="section-label" data-i18n="proj-label">// 03 — プロジェクト</p>
+    <h2 class="section-title" data-i18n-html="proj-title">開発<span>実績</span></h2>
 
     <div class="projects-grid">
 
       <div class="proj-card reveal">
         <div class="proj-icon">📈</div>
-        <div class="proj-title">Index Fund Price Trend Prediction</div>
-        <div class="proj-desc">LSTM-powered time series model for predicting index fund price trends. Features real-time candlestick charts and an optimized preprocessing pipeline for faster convergence.</div>
+        <div class="proj-title" data-i18n="proj1-title">株価指数トレンド予測</div>
+        <div class="proj-desc" data-i18n="proj1-desc">LSTMベースの時系列モデルで株価指数のトレンドを予測。リアルタイムローソク足チャートと最適化された前処理パイプラインを実装。</div>
         <div class="proj-metrics">
           <span class="metric">+15% accuracy</span>
           <span class="metric">20% faster training</span>
@@ -961,8 +977,8 @@
 
       <div class="proj-card reveal">
         <div class="proj-icon">🚦</div>
-        <div class="proj-title">Real-Time Traffic Sign Detection</div>
-        <div class="proj-desc">High-performance traffic sign detection system using YOLOv8 with 95%+ accuracy and 30+ FPS real-time inference. Accelerated dataset preparation pipeline by 40%.</div>
+        <div class="proj-title" data-i18n="proj2-title">リアルタイム交通標識検出</div>
+        <div class="proj-desc" data-i18n="proj2-desc">YOLOv8を使用した高精度（95%+）・高速（30+ FPS）の交通標識検出システム。データセット準備時間を40%短縮。</div>
         <div class="proj-metrics">
           <span class="metric">95%+ accuracy</span>
           <span class="metric">30+ FPS</span>
@@ -978,8 +994,8 @@
 
       <div class="proj-card reveal">
         <div class="proj-icon">🔐</div>
-        <div class="proj-title">Smart Door Unlocking System</div>
-        <div class="proj-desc">Multi-modal biometric authentication combining face recognition + voice verification with NLP-based commands. Integrated with relay-based smart lock hardware and real-time alert system.</div>
+        <div class="proj-title" data-i18n="proj3-title">スマートドア解錠システム</div>
+        <div class="proj-desc" data-i18n="proj3-desc">顔認証と音声認証を組み合わせたマルチモーダル生体認証システム。リレーベースのスマートロックとリアルタイムアラートと統合。</div>
         <div class="proj-metrics">
           <span class="metric">+40% liveness detection</span>
           <span class="metric">Multi-modal auth</span>
@@ -999,12 +1015,12 @@
 
   <!-- ── SKILLS ─────────────────────────────── -->
   <section id="skills">
-    <p class="section-label">// 04 — skills</p>
-    <h2 class="section-title">My <span>Toolkit</span></h2>
+    <p class="section-label" data-i18n="skills-label">// 04 — スキル</p>
+    <h2 class="section-title" data-i18n-html="skills-title">技術<span>スタック</span></h2>
 
     <div class="skills-grid">
       <div class="skill-group reveal">
-        <div class="skill-group-title">Languages</div>
+        <div class="skill-group-title" data-i18n="sg1-title">プログラミング言語</div>
         <div class="skill-tags">
           <span class="skill-tag">Python</span>
           <span class="skill-tag">C++</span>
@@ -1019,7 +1035,7 @@
       </div>
 
       <div class="skill-group reveal">
-        <div class="skill-group-title">Frameworks & Libraries</div>
+        <div class="skill-group-title" data-i18n="sg2-title">フレームワーク・ライブラリ</div>
         <div class="skill-tags">
           <span class="skill-tag">Pandas</span>
           <span class="skill-tag">NumPy</span>
@@ -1032,7 +1048,7 @@
       </div>
 
       <div class="skill-group reveal">
-        <div class="skill-group-title">Tools & Platforms</div>
+        <div class="skill-group-title" data-i18n="sg3-title">ツール・プラットフォーム</div>
         <div class="skill-tags">
           <span class="skill-tag">VS Code</span>
           <span class="skill-tag">Jupyter</span>
@@ -1045,7 +1061,7 @@
       </div>
 
       <div class="skill-group reveal">
-        <div class="skill-group-title">Systems & OS</div>
+        <div class="skill-group-title" data-i18n="sg4-title">システム・OS</div>
         <div class="skill-tags">
           <span class="skill-tag">Linux</span>
           <span class="skill-tag">Ubuntu</span>
@@ -1055,7 +1071,7 @@
       </div>
 
       <div class="skill-group reveal">
-        <div class="skill-group-title">Core CS Concepts</div>
+        <div class="skill-group-title" data-i18n="sg5-title">CS基礎</div>
         <div class="skill-tags">
           <span class="skill-tag">DSA</span>
           <span class="skill-tag">DBMS</span>
@@ -1069,28 +1085,28 @@
 
   <!-- ── EDUCATION ──────────────────────────── -->
   <section id="education">
-    <p class="section-label">// 05 — education</p>
-    <h2 class="section-title">My <span>Background</span></h2>
+    <p class="section-label" data-i18n="edu-label">// 05 — 学歴</p>
+    <h2 class="section-title" data-i18n-html="edu-title">学歴・<span>バックグラウンド</span></h2>
 
     <div class="edu-grid">
       <div class="edu-card reveal">
         <div class="edu-icon">🎓</div>
-        <div class="edu-school">VIT Vellore</div>
-        <div class="edu-degree">B.Tech in Computer Science with Data Science</div>
+        <div class="edu-school" data-i18n="edu1-school">VITヴェッローレ大学</div>
+        <div class="edu-degree" data-i18n="edu1-degree">B.Tech コンピュータサイエンス（データサイエンス）専攻</div>
         <span class="edu-badge">CGPA: 7.87</span>
       </div>
 
       <div class="edu-card reveal">
         <div class="edu-icon">🇯🇵</div>
-        <div class="edu-school">Nichibei Kaiwa Gakuin</div>
-        <div class="edu-degree">Japanese 🇯🇵 Language — I1 Level</div>
+        <div class="edu-school" data-i18n="edu2-school">日米会話学院</div>
+        <div class="edu-degree" data-i18n="edu2-degree">日本語 🇯🇵 — 中級1</div>
         <span class="edu-badge">JLPT N4</span>
       </div>
 
       <div class="edu-card reveal">
         <div class="edu-icon">📚</div>
-        <div class="edu-school">HSC Board</div>
-        <div class="edu-degree">Class 12th — Science Stream</div>
+        <div class="edu-school" data-i18n="edu3-school">ペースジュニアサイエンスカレッジ</div>
+        <div class="edu-degree" data-i18n="edu3-degree">高校（理系）</div>
         <span class="edu-badge">87.67%</span>
       </div>
     </div>
@@ -1098,63 +1114,63 @@
 
   <!-- ── LANGUAGES ──────────────────────────── -->
   <section id="languages">
-    <p class="section-label">// 06 — languages</p>
-    <h2 class="section-title">I <span>Speak</span></h2>
+    <p class="section-label" data-i18n="lang-label">// 06 — 言語</p>
+    <h2 class="section-title" data-i18n-html="lang-title">話せる<span>言語</span></h2>
 
     <div class="lang-grid reveal">
       <div class="lang-card">
         <div class="lang-flag">🇬🇧</div>
         <div class="lang-name">English</div>
-        <div class="lang-level">Native Proficiency</div>
+        <div class="lang-level" data-i18n="lang1-level">母国語</div>
       </div>
       <div class="lang-card">
         <div class="lang-flag">🇮🇳</div>
         <div class="lang-name">Hindi</div>
-        <div class="lang-level">Native Proficiency</div>
+        <div class="lang-level" data-i18n="lang2-level">母国語</div>
       </div>
       <div class="lang-card">
         <div class="lang-flag">🇯🇵</div>
-        <div class="lang-name">Japanese 🇯🇵</div>
-        <div class="lang-level">JLPT N4 · I1 Level</div>
+        <div class="lang-name">日本語 🇯🇵</div>
+        <div class="lang-level" data-i18n="lang3-level">JLPT N4 ・ 中級1</div>
       </div>
     </div>
   </section>
 
   <!-- ── ACHIEVEMENTS ───────────────────────── -->
   <section id="achievements">
-    <p class="section-label">// 07 — achievements</p>
-    <h2 class="section-title">Certificates &amp; <span>Awards</span></h2>
+    <p class="section-label" data-i18n="ach-label">// 07 — 資格・実績</p>
+    <h2 class="section-title" data-i18n-html="ach-title">資格・<span>表彰</span></h2>
 
     <div class="ach-grid">
       <div class="ach-card reveal">
         <div class="ach-icon">☁️</div>
         <div>
-          <div class="ach-name">AWS Cloud Practitioner</div>
-          <div class="ach-type">Amazon Web Services · Certification</div>
+          <div class="ach-name" data-i18n="ach1-name">AWSクラウドプラクティショナー</div>
+          <div class="ach-type" data-i18n="ach1-type">アマゾン ウェブ サービス ・ 認定資格</div>
         </div>
       </div>
 
       <div class="ach-card reveal">
         <div class="ach-icon">🤖</div>
         <div>
-          <div class="ach-name">Introduction to Generative AI</div>
-          <div class="ach-type">Google · Course Certificate</div>
+          <div class="ach-name" data-i18n="ach2-name">生成AIの基礎</div>
+          <div class="ach-type" data-i18n="ach2-type">Google ・ コース修了証</div>
         </div>
       </div>
 
       <div class="ach-card reveal">
         <div class="ach-icon">📊</div>
         <div>
-          <div class="ach-name">Statistical Inference</div>
-          <div class="ach-type">Johns Hopkins University · Coursera</div>
+          <div class="ach-name" data-i18n="ach3-name">統計的推論</div>
+          <div class="ach-type" data-i18n="ach3-type">ジョンズ・ホプキンス大学 ・ Coursera</div>
         </div>
       </div>
 
       <div class="ach-card reveal">
         <div class="ach-icon">🏅</div>
         <div>
-          <div class="ach-name">Data Science Internship Certificate</div>
-          <div class="ach-type">Oasis Infobyte · Internship</div>
+          <div class="ach-name" data-i18n="ach4-name">データサイエンスインターン修了証</div>
+          <div class="ach-type" data-i18n="ach4-type">Oasis Infobyte ・ インターンシップ</div>
         </div>
       </div>
     </div>
@@ -1162,27 +1178,27 @@
 
   <!-- ── CONTACT ────────────────────────────── -->
   <section id="contact">
-    <p class="section-label">// 08 — contact</p>
-    <h2 class="section-title">Get In <span>Touch</span></h2>
+    <p class="section-label" data-i18n="contact-label">// 08 — お問い合わせ</p>
+    <h2 class="section-title" data-i18n-html="contact-title">ご<span>連絡</span>ください</h2>
 
     <div class="contact-wrapper reveal">
-      <p>I'm actively looking for new opportunities. Whether you have a question, a project, or just want to connect — my inbox is always open.</p>
+      <p data-i18n="contact-desc">新しい機会を積極的に探しています。質問、プロジェクト、またはご挨拶でも、いつでもご連絡ください。</p>
 
       <div class="contact-cards">
         <div class="contact-item">
-          <div class="ci-label">Email</div>
+          <div class="ci-label" data-i18n="ci1-label">メール</div>
           <div class="ci-value"><a href="mailto:rasheljob2025@gmail.com">rasheljob2025@gmail.com</a></div>
         </div>
         <div class="contact-item">
-          <div class="ci-label">Location</div>
-          <div class="ci-value">Tokyo, Japan 🇯🇵</div>
+          <div class="ci-label" data-i18n="ci2-label">所在地</div>
+          <div class="ci-value">東京、日本 🇯🇵</div>
         </div>
         <div class="contact-item">
-          <div class="ci-label">Phone · India</div>
+          <div class="ci-label" data-i18n="ci3-label">電話・インド</div>
           <div class="ci-value"><a href="tel:+919930067328">+91 99300 67328</a></div>
         </div>
         <div class="contact-item">
-          <div class="ci-label">Phone · Japan 🇯🇵</div>
+          <div class="ci-label" data-i18n="ci4-label">電話・日本 🇯🇵</div>
           <div class="ci-value"><a href="tel:+818070315903">+81 80-7031-5903</a></div>
         </div>
       </div>
@@ -1204,18 +1220,18 @@
   <div id="ai-chat-widget">
     <div id="ai-chat-window" class="hidden">
       <div class="chat-header">
-        <span>Rashel's AI Assistant</span>
+        <span data-i18n="chat-title">Rashelのインタビューアシスタント</span>
         <div class="chat-header-actions">
           <button id="resize-chat" aria-label="Resize chat" title="Expand / Collapse">⤢</button>
           <button id="close-chat" aria-label="Close chat">×</button>
         </div>
       </div>
       <div id="chat-messages">
-        <div class="message assistant">👋 Hi! I'm Rashel's interview assistant. Ask me anything about her education, skills, projects, experience, or career goals — and I'll always suggest follow-up questions to keep the conversation going!</div>
+        <div class="message assistant" data-i18n="chat-welcome">👋 こんにちは！RashelのAIアシスタントです。学歴、スキル、プロジェクト、経験、キャリアについて何でもお聞きください。フォローアップの質問もご提案します！</div>
       </div>
       <div class="chat-input">
-        <input type="text" id="chat-input-field" placeholder="Ask a question..." autocomplete="off"/>
-        <button id="chat-send">Send</button>
+        <input type="text" id="chat-input-field" placeholder="質問を入力…" autocomplete="off"/>
+        <button id="chat-send" data-i18n="chat-send">送信</button>
       </div>
     </div>
     <button id="ai-chat-button" aria-label="Open AI Assistant">
@@ -1427,6 +1443,145 @@ Always format follow-up questions as:
       chatMessages.appendChild(msgDiv);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
+
+    // ── LANGUAGE TOGGLE ────────────────────────────────────────────────────────
+    const i18n = {
+      en: {
+        'nav-about':'About','nav-exp':'Experience','nav-proj':'Projects',
+        'nav-skills':'Skills','nav-edu':'Education','nav-certs':'Certs',
+        'nav-contact':'Contact','nav-cta':"Let's Talk",
+        'hero-badge':'Available for opportunities · Tokyo, Japan 🇯🇵',
+        'hero-tagline':'<strong>CS + Data Science Engineer</strong> building intelligent systems &amp; scalable web solutions. From ML models to real-time computer vision.',
+        'hero-btn-proj':'View Projects','hero-btn-contact':'Contact Me','scroll-hint':'scroll',
+        'about-label':'// 01 — about','about-title':'Who I <span>Am</span>',
+        'about-p1':"I'm <strong>Rashel Garg</strong>, a Computer Science &amp; Data Science graduate from VIT Vellore, currently based in <strong>Tokyo, Japan 🇯🇵</strong>. I'm passionate about building smart, data-driven applications — from predictive ML pipelines to real-time detection systems.",
+        'about-p2':'With hands-on internship experience across <strong>data science, web development, and enterprise software</strong>, I bridge the gap between research and production-grade systems. I\'m a multilingual technologist fluent in English, Hindi, and Japanese (JLPT N4).',
+        'about-p3':"I'm actively seeking full-time roles in <strong>software engineering, ML engineering, or data science</strong> — with a preference for Tokyo-based or remote-friendly teams.",
+        'stat-internships':'Internships','stat-models':'ML Models Built','stat-accuracy':'Peak Model Accuracy','stat-langs':'Languages Spoken',
+        'exp-label':'// 02 — experience','exp-title':"Where I've <span>Worked</span>",
+        'exp1-role':'Technical Intern','exp1-date':'Feb 2025 – Apr 2025',
+        'exp1-li1':'Built a fully responsive payslip web page for the internal employee portal.',
+        'exp1-li2':'Collaborated with the design team to deliver pixel-perfect UI components.',
+        'exp2-role':'Data Science Intern','exp2-date':'Aug 2024 – Sep 2024',
+        'exp2-li1':'Built 5 end-to-end machine learning models across diverse problem domains.',
+        'exp2-li2':'Developed a car price prediction model achieving <strong>95% accuracy</strong> and a <strong>20% RMSE reduction</strong>.',
+        'exp2-li3':'Conducted EDA, feature engineering, and model optimization across all pipelines.',
+        'exp3-role':'Web Development Intern','exp3-date':'Jun 2024 – Sep 2024',
+        'exp3-li1':'Gained strong foundations in HTML, CSS, and JavaScript from scratch.',
+        'exp3-li2':'Explored modern frameworks and best practices in frontend engineering.',
+        'exp3-li3':'Delivered responsive UI components as part of a collaborative team project.',
+        'proj-label':'// 03 — projects','proj-title':"What I've <span>Built</span>",
+        'proj1-title':'Index Fund Price Trend Prediction',
+        'proj1-desc':'LSTM-powered time series model for predicting index fund price trends. Features real-time candlestick charts and an optimized preprocessing pipeline for faster convergence.',
+        'proj2-title':'Real-Time Traffic Sign Detection',
+        'proj2-desc':'High-performance traffic sign detection system using YOLOv8 with 95%+ accuracy and 30+ FPS real-time inference. Accelerated dataset preparation pipeline by 40%.',
+        'proj3-title':'Smart Door Unlocking System',
+        'proj3-desc':'Multi-modal biometric authentication combining face recognition + voice verification with NLP-based commands. Integrated with relay-based smart lock hardware and real-time alert system.',
+        'skills-label':'// 04 — skills','skills-title':'My <span>Toolkit</span>',
+        'sg1-title':'Languages','sg2-title':'Frameworks & Libraries','sg3-title':'Tools & Platforms','sg4-title':'Systems & OS','sg5-title':'Core CS Concepts',
+        'edu-label':'// 05 — education','edu-title':'My <span>Background</span>',
+        'edu1-school':'VIT Vellore','edu1-degree':'B.Tech in Computer Science with Data Science',
+        'edu2-school':'Nichibei Kaiwa Gakuin','edu2-degree':'Japanese 🇯🇵 Language — I1 Level',
+        'edu3-school':'HSC Board','edu3-degree':'Class 12th — Science Stream',
+        'lang-label':'// 06 — languages','lang-title':'I <span>Speak</span>',
+        'lang1-level':'Native Proficiency','lang2-level':'Native Proficiency','lang3-level':'JLPT N4 · I1 Level',
+        'ach-label':'// 07 — achievements','ach-title':'Certificates &amp; <span>Awards</span>',
+        'ach1-name':'AWS Cloud Practitioner','ach1-type':'Amazon Web Services · Certification',
+        'ach2-name':'Introduction to Generative AI','ach2-type':'Google · Course Certificate',
+        'ach3-name':'Statistical Inference','ach3-type':'Johns Hopkins University · Coursera',
+        'ach4-name':'Data Science Internship Certificate','ach4-type':'Oasis Infobyte · Internship',
+        'contact-label':'// 08 — contact','contact-title':'Get In <span>Touch</span>',
+        'contact-desc':"I'm actively looking for new opportunities. Whether you have a question, a project, or just want to connect — my inbox is always open.",
+        'ci1-label':'Email','ci2-label':'Location','ci3-label':'Phone · India','ci4-label':'Phone · Japan 🇯🇵',
+        'chat-title':"Rashel's AI Assistant",
+        'chat-welcome':"👋 Hi! I'm Rashel's interview assistant. Ask me anything about her education, skills, projects, experience, or career goals — and I'll always suggest follow-up questions!",
+        'chat-placeholder':'Ask a question...','chat-send':'Send',
+      },
+      ja: {
+        'nav-about':'自己紹介','nav-exp':'経歴','nav-proj':'プロジェクト',
+        'nav-skills':'スキル','nav-edu':'学歴','nav-certs':'資格',
+        'nav-contact':'お問い合わせ','nav-cta':'お問い合わせ',
+        'hero-badge':'求職中 · 東京、日本 🇯🇵',
+        'hero-tagline':'<strong>CS・データサイエンスエンジニア</strong>。MLモデルからリアルタイム映像認識まで、革新的なシステムを構築します。',
+        'hero-btn-proj':'プロジェクトを見る','hero-btn-contact':'連絡する','scroll-hint':'スクロール',
+        'about-label':'// 01 — 自己紹介','about-title':'私に<span>ついて</span>',
+        'about-p1':'<strong>Rashel Garg</strong>です。VITヴェッローレ大学でCS＆データサイエンスを専攻し、現在は<strong>東京在住 🇯🇵</strong>。MLパイプラインからリアルタイム検知まで、データ駆動型アプリ開発に情熱を持っています。',
+        'about-p2':'<strong>データサイエンス・Web開発・エンタープライズソフトウェア</strong>のインターン経験を持ち、研究と本番システムの橋渡しをします。英語・ヒンディー語・日本語（JLPT N4）のトリリンガルエンジニアです。',
+        'about-p3':'<strong>ソフトウェアエンジニアリング・ML・データサイエンス</strong>のフルタイムポジションを積極的に探しています。東京勤務またはリモートワーク可の企業を希望します。',
+        'stat-internships':'インターンシップ','stat-models':'MLモデル構築','stat-accuracy':'最高モデル精度','stat-langs':'話せる言語数',
+        'exp-label':'// 02 — 職歴','exp-title':'職務<span>経歴</span>',
+        'exp1-role':'テクニカルインターン','exp1-date':'2025年2月〜4月',
+        'exp1-li1':'社内従業員ポータル向けに、完全レスポンシブな給与明細Webページを開発。',
+        'exp1-li2':'デザインチームと協力し、精確なUIコンポーネントを実装。',
+        'exp2-role':'データサイエンスインターン','exp2-date':'2024年8月〜9月',
+        'exp2-li1':'多様な問題領域にわたる5つのMLモデルをエンドツーエンドで構築。',
+        'exp2-li2':'車両価格予測モデルで<strong>精度95%</strong>・RMSE<strong>20%削減</strong>を達成。',
+        'exp2-li3':'EDA・特徴量エンジニアリング・モデル最適化を実施。',
+        'exp3-role':'Web開発インターン','exp3-date':'2024年6月〜9月',
+        'exp3-li1':'HTML・CSS・JavaScriptの基礎を習得。',
+        'exp3-li2':'モダンWebフレームワークとフロントエンドのベストプラクティスを学習。',
+        'exp3-li3':'チームプロジェクトでレスポンシブUIコンポーネントを実装。',
+        'proj-label':'// 03 — プロジェクト','proj-title':'開発<span>実績</span>',
+        'proj1-title':'株価指数トレンド予測',
+        'proj1-desc':'LSTMベースの時系列モデルで株価指数のトレンドを予測。リアルタイムローソク足チャートと最適化された前処理パイプラインを実装。',
+        'proj2-title':'リアルタイム交通標識検出',
+        'proj2-desc':'YOLOv8を使用した高精度（95%+）・高速（30+ FPS）の交通標識検出システム。データセット準備時間を40%短縮。',
+        'proj3-title':'スマートドア解錠システム',
+        'proj3-desc':'顔認証と音声認証を組み合わせたマルチモーダル生体認証システム。リレーベースのスマートロックとリアルタイムアラートと統合。',
+        'skills-label':'// 04 — スキル','skills-title':'技術<span>スタック</span>',
+        'sg1-title':'プログラミング言語','sg2-title':'フレームワーク・ライブラリ','sg3-title':'ツール・プラットフォーム','sg4-title':'システム・OS','sg5-title':'CS基礎',
+        'edu-label':'// 05 — 学歴','edu-title':'学歴・<span>バックグラウンド</span>',
+        'edu1-school':'VITヴェッローレ大学','edu1-degree':'B.Tech コンピュータサイエンス（データサイエンス）専攻',
+        'edu2-school':'日米会話学院','edu2-degree':'日本語 🇯🇵 — 中級1',
+        'edu3-school':'ペースジュニアサイエンスカレッジ','edu3-degree':'高校（理系）',
+        'lang-label':'// 06 — 言語','lang-title':'話せる<span>言語</span>',
+        'lang1-level':'母国語','lang2-level':'母国語','lang3-level':'JLPT N4 · 中級1',
+        'ach-label':'// 07 — 資格・実績','ach-title':'資格・<span>表彰</span>',
+        'ach1-name':'AWSクラウドプラクティショナー','ach1-type':'アマゾン ウェブ サービス · 認定資格',
+        'ach2-name':'生成AIの基礎','ach2-type':'Google · コース修了証',
+        'ach3-name':'統計的推論','ach3-type':'ジョンズ・ホプキンス大学 · Coursera',
+        'ach4-name':'データサイエンスインターン修了証','ach4-type':'Oasis Infobyte · インターンシップ',
+        'contact-label':'// 08 — お問い合わせ','contact-title':'ご<span>連絡</span>ください',
+        'contact-desc':'新しい機会を積極的に探しています。質問、プロジェクト、またはご挨拶でも、いつでもご連絡ください。',
+        'ci1-label':'メール','ci2-label':'所在地','ci3-label':'電話・インド','ci4-label':'電話・日本 🇯🇵',
+        'chat-title':'Rashelのインタビューアシスタント',
+        'chat-welcome':'👋 こんにちは！RashelのAIアシスタントです。学歴、スキル、プロジェクト、経験、キャリアについて何でもお聞きください。フォローアップの質問もご提案します！',
+        'chat-placeholder':'質問を入力…','chat-send':'送信',
+      }
+    };
+
+    let currentLang = 'ja';
+
+    function applyLang(lang) {
+      currentLang = lang;
+      const t = i18n[lang];
+      // Plain text elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      // HTML elements (allow spans, strongs inside)
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      // Chat input placeholder (not a text node)
+      if (t['chat-placeholder']) chatInput.placeholder = t['chat-placeholder'];
+      // Lang button label shows the OTHER language
+      const langBtn = document.getElementById('langToggle');
+      if (langBtn) langBtn.textContent = lang === 'ja' ? 'EN' : '日本語';
+      // Update <html lang>
+      document.documentElement.lang = lang;
+    }
+
+    // Wire up the language toggle button
+    const langToggleBtn = document.getElementById('langToggle');
+    langToggleBtn.addEventListener('click', () => {
+      applyLang(currentLang === 'ja' ? 'en' : 'ja');
+    });
+
+    // Apply Japanese as default on load
+    applyLang('ja');
   </script>
 
   <!-- Twemoji (for Windows / Cross-Platform Flag Rendering) -->
