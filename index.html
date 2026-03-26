@@ -67,8 +67,6 @@
       font-weight: 600 !important;
     }
     :root[data-theme="light"] .pill:hover { border-color: var(--blue) !important; color: var(--blue) !important; }
-    :root[data-theme="light"] .scroll-hint { color: #334155 !important; }
-    :root[data-theme="light"] .scroll-hint .arrow { border-color: #334155 !important; }
 
     img.emoji {
       height: 1.25em;
@@ -325,15 +323,6 @@
       transition: var(--transition);
     }
     .btn-outline:hover { border-color: var(--purple); background: rgba(168,85,247,0.08); }
-
-    .scroll-hint {
-      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted);
-      animation: fadeUp 0.7s 0.7s ease both;
-    }
-    .scroll-hint .arrow { width: 18px; height: 18px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); animation: bounce 1.8s infinite; }
-    @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(5px); } }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -872,10 +861,6 @@
       <a href="#contact" class="btn-outline" data-i18n="hero-btn-contact">連絡する</a>
     </div>
 
-    <div class="scroll-hint">
-      <span data-i18n="scroll-hint">スクロール</span>
-      <div class="arrow"></div>
-    </div>
   </section>
 
   <!-- ── ABOUT ─────────────────────────────── -->
