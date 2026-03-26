@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Rashel Garg — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <style>
     /* ─────────────────────────────────────────
        RESET & VARIABLES
@@ -13,60 +14,62 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0f172a;
-      --bg2:       #1e293b;
-      --bg3:       #334155;
-      --card:      #1e293b;
-      --border:    rgba(255,255,255,0.1);
-      --blue:      #60a5fa;
-      --blue-dim:  #3b82f6;
-      --purple:    #c084fc;
-      --cyan:      #22d3ee;
-      --glow-blue: 0 0 30px rgba(96,165,250,0.15);
-      --glow-purp: 0 0 30px rgba(192,132,252,0.15);
-      --text:      #f8fafc;
-      --muted:     #94a3b8;
-      --font-head: 'Syne', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
+      /* Dark Theme (Inverted Editorial) */
+      --bg:        #161615;
+      --bg2:       #1e1e1d;
+      --bg3:       #2a2a29;
+      --card:      #1a1a1a;
+      --border:    rgba(253,254,241,0.1);
+      --blue:      #D5D5C9;
+      --blue-dim:  #888880;
+      --purple:    #EAEBDD;
+      --cyan:      #FDFEF1;
+      --glow-blue: 0 0 20px rgba(213,213,201,0.08);
+      --glow-purp: 0 0 20px rgba(234,235,221,0.08);
+      --text:      #FDFEF1;
+      --muted:     #888880;
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Montserrat', sans-serif;
       --font-mono: 'DM Mono', monospace;
-      --radius:    14px;
-      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+      --radius:    4px;
+      --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
     }
     :root[data-theme="light"] {
-      --bg:        #fdfdfd;
-      --bg2:       #f7f9fc;
-      --bg3:       #edf2f7;
+      /* Light Theme (Canva Default) */
+      --bg:        #FDFEF1;
+      --bg2:       #f4f5e6;
+      --bg3:       #EAEBDD;
       --card:      #ffffff;
-      --border:    rgba(0,0,0,0.08);
-      --blue:      #2563eb;
-      --blue-dim:  #3b82f6;
-      --purple:    #9333ea;
-      --cyan:      #0891b2;
-      --glow-blue: 0 0 20px rgba(37,99,235,0.15);
-      --glow-purp: 0 0 20px rgba(147,51,234,0.15);
-      --text:      #1a202c;
-      --muted:     #64748b;
+      --border:    rgba(22,22,21,0.1);
+      --blue:      #161615;
+      --blue-dim:  #333333;
+      --purple:    #888880;
+      --cyan:      #161615;
+      --glow-blue: 0 4px 15px rgba(22,22,21,0.03);
+      --glow-purp: 0 4px 15px rgba(22,22,21,0.03);
+      --text:      #161615;
+      --muted:     #555550;
     }
     :root[data-theme="light"] .grid-bg {
       background-image:
-        linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(22,22,21,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,22,21,0.03) 1px, transparent 1px);
     }
-    :root[data-theme="light"] nav { background: rgba(253,253,253,0.85); }
-    :root[data-theme="light"] .mobile-menu { background: rgba(253,253,253,0.97); }
-    :root[data-theme="light"] .chat-header { background: #fdfdfd; }
+    :root[data-theme="light"] nav { background: rgba(253,254,241,0.9); }
+    :root[data-theme="light"] .mobile-menu { background: rgba(253,254,241,0.98); }
+    :root[data-theme="light"] .chat-header { background: #FDFEF1; }
 
     /* ── Light-theme hero fixes ── */
-    :root[data-theme="light"] .hero-name .line1 { color: #0f172a !important; }
-    :root[data-theme="light"] .hero-tagline { color: #1e293b !important; }
-    :root[data-theme="light"] .hero-tagline strong { color: #000000 !important; font-weight: 700 !important; }
+    :root[data-theme="light"] .hero-name .line1 { color: #161615 !important; }
+    :root[data-theme="light"] .hero-tagline { color: #333333 !important; }
+    :root[data-theme="light"] .hero-tagline strong { color: #161615 !important; font-weight: 600 !important; }
     :root[data-theme="light"] .pill {
-      background: rgba(0,0,0,0.06) !important;
-      border-color: rgba(0,0,0,0.15) !important;
-      color: #0f172a !important;
-      font-weight: 600 !important;
+      background: transparent !important;
+      border-color: rgba(22,22,21,0.15) !important;
+      color: #161615 !important;
+      font-weight: 500 !important;
     }
-    :root[data-theme="light"] .pill:hover { border-color: var(--blue) !important; color: var(--blue) !important; }
+    :root[data-theme="light"] .pill:hover { border-color: var(--blue) !important; background: rgba(22,22,21,0.04) !important; }
 
     img.emoji {
       height: 1.25em;
@@ -131,12 +134,10 @@
 
     .nav-logo {
       font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.02em;
+      color: var(--text);
     }
 
     .nav-links {
@@ -158,16 +159,19 @@
     }
 
     .nav-cta {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
+      font-weight: 500;
       font-size: 0.72rem;
-      padding: 7px 16px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--blue-dim), var(--purple));
-      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 6px 15px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      background: var(--text);
+      color: var(--bg);
       transition: var(--transition);
-      opacity: 0.9;
     }
-    .nav-cta:hover { opacity: 1; transform: translateY(-1px); box-shadow: var(--glow-blue); }
+    .nav-cta:hover { transform: translateY(-1px); background: transparent; color: var(--text); border-color: var(--text); }
 
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
     .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
@@ -260,9 +264,8 @@
     .hero-name .line1 { display: block; color: var(--text); }
     .hero-name .line2 {
       display: block;
-      background: linear-gradient(135deg, var(--blue) 20%, var(--purple) 70%, var(--cyan) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--blue);
+      font-style: italic;
     }
 
     .hero-tagline {
@@ -300,29 +303,33 @@
 
     .btn-primary {
       padding: 13px 28px;
-      background: linear-gradient(135deg, var(--blue-dim), var(--purple));
-      border-radius: 10px;
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #fff;
+      background: var(--text);
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--bg);
       transition: var(--transition);
-      box-shadow: 0 0 0 rgba(79,142,247,0);
+      border: 1px solid var(--text);
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--glow-blue); }
+    .btn-primary:hover { transform: translateY(-2px); background: transparent; color: var(--text); }
 
     .btn-outline {
       padding: 13px 28px;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      font-family: var(--font-head);
-      font-weight: 600;
-      font-size: 0.9rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
       color: var(--text);
       background: transparent;
       transition: var(--transition);
     }
-    .btn-outline:hover { border-color: var(--purple); background: rgba(168,85,247,0.08); }
+    .btn-outline:hover { border-color: var(--text); background: var(--text); color: var(--bg); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -359,14 +366,14 @@
       transition: var(--transition);
     }
     .stat-card:hover { border-color: var(--blue); box-shadow: var(--glow-blue); transform: translateY(-3px); }
-    .stat-card .num { font-family: var(--font-head); font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-card .num { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--text); }
     .stat-card .lbl { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.08em; }
 
     /* ─────────────────────────────────────────
        EXPERIENCE
     ───────────────────────────────────────── */
     .timeline { position: relative; padding-left: 32px; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--blue), var(--purple), transparent); }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: var(--text); opacity: 0.2; }
 
     .exp-card {
       background: var(--card);
@@ -419,7 +426,7 @@
     .proj-card::before {
       content: '';
       position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
+      background: var(--text);
       transform: scaleX(0); transform-origin: left;
       transition: transform var(--transition);
     }
@@ -481,7 +488,7 @@
       margin-bottom: 14px;
       display: flex; align-items: center; gap: 8px;
     }
-    .skill-group-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(168,85,247,0.3), transparent); }
+    .skill-group-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
     .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
     .skill-tag {
@@ -566,9 +573,9 @@
     .ach-card:hover { border-color: var(--blue); box-shadow: var(--glow-blue); transform: translateX(4px); }
     .ach-icon {
       width: 42px; height: 42px; min-width: 42px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, rgba(79,142,247,0.15), rgba(168,85,247,0.15));
-      border: 1px solid rgba(79,142,247,0.2);
+      border-radius: var(--radius);
+      background: var(--bg2);
+      border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem;
     }
@@ -715,11 +722,11 @@
       font-family: var(--font-body);
     }
     #ai-chat-button {
-      background: linear-gradient(135deg, var(--blue-dim), var(--purple));
-      color: white; border: none; border-radius: 50%;
+      background: var(--text);
+      color: var(--bg); border: 2px solid var(--border); border-radius: 50%;
       width: 56px; height: 56px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15); transition: var(--transition);
     }
     #ai-chat-button:hover { transform: scale(1.05); box-shadow: var(--glow-blue); }
     #ai-chat-button svg { width: 28px; height: 28px; }
@@ -763,9 +770,9 @@
       border-bottom-left-radius: 4px; border: 1px solid var(--border);
     }
     .message.user {
-      background: linear-gradient(135deg, var(--blue-dim), var(--purple)); color: white;
+      background: var(--text); color: var(--bg);
       align-self: flex-end; border-bottom-right-radius: 4px;
-      box-shadow: var(--glow-blue);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .chat-input {
@@ -858,6 +865,7 @@
 
     <div class="hero-btns">
       <a href="#projects" class="btn-primary" data-i18n="hero-btn-proj">プロジェクトを見る</a>
+      <a href="https://drive.google.com/drive/folders/1MSt6kgTyg2G7WCrhrrOkA_nK2kRLp0-H?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline" data-i18n="hero-btn-cv">履歴書 (日英)</a>
       <a href="#contact" class="btn-outline" data-i18n="hero-btn-contact">連絡する</a>
     </div>
 
@@ -1451,7 +1459,8 @@ Always format follow-up questions as:
         'nav-contact':'Contact','nav-cta':"Let's Talk",
         'hero-badge':'Available for opportunities · Tokyo, Japan 🇯🇵',
         'hero-tagline':'<strong>CS + Data Science Engineer</strong> building intelligent systems &amp; scalable web solutions. From ML models to real-time computer vision.',
-        'hero-btn-proj':'View Projects','hero-btn-contact':'Contact Me','scroll-hint':'scroll',
+        'hero-btn-proj':'View Projects','hero-btn-contact':'Contact Me',
+        'hero-btn-cv':'Resume / CV (EN/JA)','scroll-hint':'scroll',
         'about-label':'// 01 — about','about-title':'Who I <span>Am</span>',
         'about-p1':"I'm <strong>Rashel Garg</strong>, a Computer Science &amp; Data Science graduate from VIT Vellore, currently based in <strong>Tokyo, Japan 🇯🇵</strong>. I'm passionate about building smart, data-driven applications — from predictive ML pipelines to real-time detection systems.",
         'about-p2':'With hands-on internship experience across <strong>data science, web development, and enterprise software</strong>, I bridge the gap between research and production-grade systems. I\'m a multilingual technologist fluent in English, Hindi, and Japanese (JLPT N4).',
@@ -1502,7 +1511,8 @@ Always format follow-up questions as:
         'nav-contact':'お問い合わせ','nav-cta':'お問い合わせ',
         'hero-badge':'求職中 · 東京、日本 🇯🇵',
         'hero-tagline':'<strong>CS・データサイエンスエンジニア</strong>。MLモデルからリアルタイム映像認識まで、革新的なシステムを構築します。',
-        'hero-btn-proj':'プロジェクトを見る','hero-btn-contact':'連絡する','scroll-hint':'スクロール',
+        'hero-btn-proj':'プロジェクトを見る','hero-btn-contact':'連絡する',
+        'hero-btn-cv':'履歴書 (日英)','scroll-hint':'スクロール',
         'about-label':'// 01 — 自己紹介','about-title':'私に<span>ついて</span>',
         'about-p1':'<strong>Rashel Garg</strong>です。VITヴェッローレ大学でCS＆データサイエンスを専攻し、現在は<strong>東京在住 🇯🇵</strong>。MLパイプラインからリアルタイム検知まで、データ駆動型アプリ開発に情熱を持っています。',
         'about-p2':'<strong>データサイエンス・Web開発・エンタープライズソフトウェア</strong>のインターン経験を持ち、研究と本番システムの橋渡しをします。英語・ヒンディー語・日本語（JLPT N4）のトリリンガルエンジニアです。',
